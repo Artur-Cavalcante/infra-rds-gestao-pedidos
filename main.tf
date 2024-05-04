@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 
-resource "aws_rds_cluster" "aurora_cluster-gestao-pedidos" {
+resource "aws_rds_cluster" "aurora_cluster_gestao_pedidos" {
   cluster_identifier      = "my-aurora-cluster"
   engine                  = "aurora-postgresql"
   engine_version          = "11.12"
@@ -15,7 +15,7 @@ resource "aws_rds_cluster" "aurora_cluster-gestao-pedidos" {
 
 resource "aws_rds_cluster_instance" "aurora_instances" {
   count                   = 2 
-  cluster_identifier      = aws_rds_cluster.aurora_cluster.id
+  cluster_identifier      = aws_rds_cluster.aurora_cluster_gestao_pedidos.id
   instance_class          = "db.t3.micro" 
   engine                  = "aurora-postgresql"
 }
