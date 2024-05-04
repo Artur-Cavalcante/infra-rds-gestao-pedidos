@@ -2,16 +2,20 @@ provider "aws" {
   region = "us-east-2"
 }
 
-resource "aws_db_instance" "my_database" {
-  identifier            = "my-database-instance"
-  allocated_storage     = 20
-  storage_type          = "gp2"
-  engine                = "mysql"
-  engine_version        = "5.7.34"
-  instance_class        = "db.t3.micro"
-  db_name                  = "mydatabase"
-  username              = "admin"
-  password              = "password"
-  parameter_group_name  = "default.mysql5.7"
-  
+
+resource "aws_rds_cluster" "aurora_cluster-gestao-pedidos" {
+  cluster_identifier      = "my-aurora-cluster"
+  engine                  = "aurora-postgresql"
+  engine_version          = "11.12"
+  master_username         = "admin"
+  master_password         = "fiap"
+  database_name           = "gestao-pedidos"
+  skip_final_snapshot     = true 
+}
+
+resource "aws_rds_cluster_instance" "aurora_instances" {
+  count                   = 2 
+  cluster_identifier      = aws_rds_cluster.aurora_cluster.id
+  instance_class          = "db.t3.micro" 
+  engine                  = "aurora-postgresql"
 }
