@@ -1,9 +1,10 @@
 name: RDS Deploy
 
 on:
-  push:
+  pull_request:
     branches:
       - main
+      - develop
 
 jobs:
   rds_deploy:
