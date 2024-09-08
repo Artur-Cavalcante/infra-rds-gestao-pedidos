@@ -1,7 +1,7 @@
 provider "aws" {
   region = "us-east-2"
 }
-
+ 
 
 resource "aws_rds_cluster" "aurora_cluster_gestao_pedidos" {
   cluster_identifier      = "my-aurora-cluster"
