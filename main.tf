@@ -12,7 +12,7 @@ resource "aws_rds_cluster" "aurora_cluster_gestao_pedidos" {
   database_name           = "gestao-pedidos"
   skip_final_snapshot     = true 
 }
-
+ 
 resource "aws_rds_cluster_instance" "aurora_instances" {
   count                   = 2 
   cluster_identifier      = aws_rds_cluster.aurora_cluster_gestao_pedidos.id
