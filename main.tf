@@ -6,7 +6,6 @@ provider "aws" {
 resource "aws_rds_cluster" "aurora_cluster_gestao_pedidos" {
   cluster_identifier      = "my-aurora-cluster"
   engine                  = "aurora-postgresql"
-  engine_version          = "latest"
   master_username         = "admin"
   master_password         = "fiap"
   database_name           = "gestao-pedidos"
